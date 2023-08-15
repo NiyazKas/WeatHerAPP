@@ -18,7 +18,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="200dp"
             android:background="#8D558EE3">
 
             <TextView
@@ -38,26 +38,26 @@
                 android:id="@+id/City_Name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="36dp"
+                android:layout_marginTop="28dp"
                 android:fontFamily="@font/amaranth"
                 android:text="LONDOn"
                 android:textSize="40sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/Celsius"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:gravity="center"
+                android:layout_height="60dp"
+                android:layout_marginTop="4dp"
                 android:fontFamily="@font/amaranth"
+                android:gravity="center"
                 android:text="20^c"
                 android:textSize="40sp"
                 app:layout_constraintEnd_toEndOf="@+id/City_Name"
-                app:layout_constraintHorizontal_bias="0.483"
+                app:layout_constraintHorizontal_bias="0.507"
                 app:layout_constraintStart_toStartOf="@+id/City_Name"
                 app:layout_constraintTop_toBottomOf="@+id/City_Name" />
 

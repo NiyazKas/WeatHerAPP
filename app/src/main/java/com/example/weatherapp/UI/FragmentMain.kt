@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.weatherapp.Adapters.AdapterWeatherAPI
 import com.example.weatherapp.Adapters.ExampleAdapter
+import com.example.weatherapp.Data.ExampleClass
 import com.example.weatherapp.Data.WeatherData
 import com.example.weatherapp.Model.RetrofitRepository
 import com.example.weatherapp.databinding.FragmentMainBinding
@@ -16,9 +17,9 @@ import com.example.weatherapp.databinding.FragmentMainBinding
 class FragmentMain : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
-    private lateinit var adapter: AdapterWeatherAPI
+    private lateinit var adapter: ExampleAdapter
 
-    private val viewModel   : FragmentMainViewModel by viewModels()
+    private val viewModel: FragmentMainViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,7 +32,7 @@ class FragmentMain : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapter = AdapterWeatherAPI()
+        adapter = ExampleAdapter()
 
         Log.d("LOG", "Адаптер загружен")
         binding.Recycler.adapter = adapter
@@ -40,15 +41,44 @@ class FragmentMain : Fragment() {
 
     }
 
-    fun loadData(){
-        viewModel.loadingWeatherData.observe(viewLifecycleOwner){it ->
-            val list = listOf(it)
-            adapter.submitList(list)
-            Log.d("LOG", "${it.forecast}${it.current}${it.location}")
-            binding.CityName.text = it.location.name
-            binding.Celsius.text = it.current.temp_c.toString() + "°C"
+    fun loadData() {
+            viewModel.loadingWeatherData.observe(viewLifecycleOwner) { weatherData ->
+                val itemList: MutableList<ExampleClass> = mutableListOf()
+
+                binding.CityName.text = weatherData.location.name
+                binding.Date.text = weatherData.location.localtime
+                binding.Celsius.text = weatherData.current.temp_c.toString()
+
+                weatherData.forecast.forecastday.forEach { forecastDay ->
+                    Log.d("Log", "icon items: ${weatherData.current.condition.icon}")
+                    val item = ExampleClass(
+                        condIcon = weatherData.current.condition.icon,
+                        avghumidity = forecastDay.day.avghumidity,
+                        maxwind_kph = forecastDay.day.maxwind_kph,
+                        condText = weatherData.current.condition.text,
+                        avgtemp_c = forecastDay.day.avgtemp_c
+                    )
+                    itemList.add(item)
+                }
+//            val item: List<ExampleClass> = listOf(
+//                ExampleClass(
+//                    condIcon = it.current.condition.icon,
+//                    avghumidity = it.forecast.forecastday[3].day.avghumidity,
+//                    maxwind_kph = it.forecast.forecastday[3].day.maxwind_kph,
+//                    condText = it.current.condition.text,
+//                    avgtemp_c = it.forecast.forecastday[3].day.avgtemp_c
+//            ), ExampleClass(
+//                condIcon = it.current.condition.icon,
+//                avghumidity = it.forecast.forecastday[3].day.avghumidity,
+//                maxwind_kph = it.forecast.forecastday[3].day.maxwind_kph,
+//                condText = it.current.condition.text,
+//                avgtemp_c = it.forecast.forecastday[3].day.avgtemp_c
+//            )
+//            )
+                Log.d("Log", "is : ${itemList.size}")
+                adapter.updateData(itemList)
+//            Log.d("LOG", "Data received. Size: ${it.size}")
+            }
         }
+
     }
-
-
-}

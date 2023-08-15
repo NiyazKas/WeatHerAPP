@@ -9,7 +9,7 @@ import retrofit2.http.Headers
 interface ApiService {
 
 
-    @GET("forecast.json?key=${Const.API_KEY}&q=Moscow&days=5&aqi=no&alerts=no")
+    @GET("forecast.json?key=${Const.API_KEY}&q=London&days=5&aqi=no&alerts=no")
     suspend fun getForecast(): Response<WeatherData>
 
 }
