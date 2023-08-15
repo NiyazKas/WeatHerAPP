@@ -34,13 +34,6 @@ class ExampleAdapter() : RecyclerView.Adapter<ExampleAdapter.ItemHolder>() {
             textview3.text = data.avghumidity.toString()
             Celcius.text = data.avgtemp_c.toString()
 
-//                textview1.text = current.condition.text
-//                Celcius.text = forecast.forecastday[adapterPosition].day.avgtemp_c.toString() + "°C"
-//                textview2.text =
-//                    "max wind: " + forecast.forecastday[adapterPosition].day.maxwind_kph.toString()
-//                textview3.text =
-//                    "humidity: " + forecast.forecastday[adapterPosition].day.avghumidity.toString()
-
         }
     }
 
@@ -62,25 +55,4 @@ class ExampleAdapter() : RecyclerView.Adapter<ExampleAdapter.ItemHolder>() {
             notifyDataSetChanged()
         }
     }
-
-
-//        fun bind(data: WeatherData) = with(binding) {
-//            val absoluteUrl = "http:" + data.current.condition.icon
-//            Glide.with(itemView.context)
-//                .asBitmap()
-//                .centerCrop()
-//                .load(absoluteUrl)
-//                .into(IW)
-//
-//            Celcius.text = data.current.temp_c.toString() + "°C"
-//            textview2.text = "max wind: " + data.forecast.forecastday[adapterPosition].day.maxwind_kph.toString()
-//            textview3.text = "humidity: " + data.forecast.forecastday[adapterPosition].day.avghumidity.toString()
-//            textview1.text = data.current.condition.text
-//        }
-//            textview1.text = data.current.condition.text
-//            Celcius.text =
-//                data.forecast.forecastday[adapterPosition].day.avgtemp_c.toString() + "°C"
-//            textview2.text = "max wind: " + data.forecast.forecastday[adapterPosition].day.maxwind_kph.toString()
-//            textview3.text =
-//                "humidity: " + data.forecast.forecastday[adapterPosition].day.avghumidity.toString()
 

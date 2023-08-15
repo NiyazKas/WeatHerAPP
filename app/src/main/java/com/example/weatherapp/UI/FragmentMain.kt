@@ -60,24 +60,9 @@ class FragmentMain : Fragment() {
                     )
                     itemList.add(item)
                 }
-//            val item: List<ExampleClass> = listOf(
-//                ExampleClass(
-//                    condIcon = it.current.condition.icon,
-//                    avghumidity = it.forecast.forecastday[3].day.avghumidity,
-//                    maxwind_kph = it.forecast.forecastday[3].day.maxwind_kph,
-//                    condText = it.current.condition.text,
-//                    avgtemp_c = it.forecast.forecastday[3].day.avgtemp_c
-//            ), ExampleClass(
-//                condIcon = it.current.condition.icon,
-//                avghumidity = it.forecast.forecastday[3].day.avghumidity,
-//                maxwind_kph = it.forecast.forecastday[3].day.maxwind_kph,
-//                condText = it.current.condition.text,
-//                avgtemp_c = it.forecast.forecastday[3].day.avgtemp_c
-//            )
-//            )
+
                 Log.d("Log", "is : ${itemList.size}")
                 adapter.updateData(itemList)
-//            Log.d("LOG", "Data received. Size: ${it.size}")
             }
         }
 
